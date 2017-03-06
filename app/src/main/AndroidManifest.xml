@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="woddiary20.bazaleev.io.woddiary20"
+          android:installLocation="preferExternal">
+
+    <application
+        android:name=".WODDiaryApplication"
+        android:allowBackup="true"
+        android:configChanges="orientation"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustPan">
+
+        <activity android:name=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name=".storage.cntntprvdr.WODContentProvider"
+            android:authorities="com.buzmax.io.woddiary.provider"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.addexercise.AddExerciseActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_add_exercise"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
+    </application>
+</manifest>
