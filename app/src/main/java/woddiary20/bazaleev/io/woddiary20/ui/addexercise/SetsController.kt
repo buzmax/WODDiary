@@ -36,10 +36,7 @@ class SetsController internal constructor(private val setsContainer: LinearLayou
     }
 
     private fun isSetsValid(): Boolean {
-        return if (setsContainer.childCount < 1) false else {
-            val result = (0..setsContainer.childCount - 1).any { isSetValid(setsContainer.getChildAt(it)) }
-            return result
-        }
+        return if (setsContainer.childCount < 1) false else (0..setsContainer.childCount - 1).any { isSetValid(setsContainer.getChildAt(it)) }
     }
 
     private fun isSetValid(view: View): Boolean {
