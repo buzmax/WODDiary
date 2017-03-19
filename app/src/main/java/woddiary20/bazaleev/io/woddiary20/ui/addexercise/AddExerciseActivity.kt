@@ -1,19 +1,17 @@
 package woddiary20.bazaleev.io.woddiary20.ui.addexercise
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_add_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_layout.*
-import kotlinx.android.synthetic.main.item_set.view.*
 import woddiary20.bazaleev.io.woddiary20.R
 import woddiary20.bazaleev.io.woddiary20.WODDiaryApplication
 import woddiary20.bazaleev.io.woddiary20.ui.base.BaseActivity
 
 class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(), AddExerciseView {
     var addExercisePresenter: AddExercisePresenter? = null
-    var setsController: SetController? = null
+//    var setsController: SetController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WODDiaryApplication.getAppComponent(this).inject(this)
@@ -29,15 +27,15 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
     }
 
     private fun setUpSets() {
-        setsController = SetController(sets_container)
+//        setsController = SetController(sets_container)
         addSet()
 //        setsController!!.addSet()
         ib_plus.setOnClickListener {
             addSet()
             //            setsController!!.addSet()
-            scroll_container.post {
-                scroll_container.scrollTo(0, scroll_container.bottom)
-            }
+//            scroll_container.post {
+//                scroll_container.scrollTo(0, scroll_container.bottom)
+//            }
         }
     }
 
@@ -74,11 +72,11 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
     override fun onExerciseSaved() = onBackPressed()
 
     fun addSet() {
-        val view = LayoutInflater.from(this).inflate(R.layout.item_set, sets_container, false)
-        view.tag = sets_container.childCount
-        view.ib_remove.setOnClickListener({})
-        sets_container.addView(view)
-        sets_container.requestLayout()
-        view.et_reps.requestFocus()
+//        val view = LayoutInflater.from(this).inflate(R.layout.item_set, sets_container, false)
+//        view.tag = sets_container.childCount
+//        view.ib_remove.setOnClickListener({})
+//        sets_container.addView(view)
+//        sets_container.requestLayout()
+//        view.et_reps.requestFocus()
     }
 }

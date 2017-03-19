@@ -8,30 +8,47 @@
     android:fitsSystemWindows="true"
     tools:context="woddiary20.bazaleev.io.woddiary20.ui.addexercise.AddExerciseActivity">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email"/>
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:id="@+id/fab"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="@dimen/fab_margin"-->
+    <!--app:layout_anchor="@+id/app_bar"-->
+    <!--app:layout_anchorGravity="bottom|end"-->
+    <!--app:srcCompat="@android:drawable/ic_dialog_email"/>-->
 
     <include layout="@layout/add_exercise_layout"/>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="180dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/colorPrimaryDark"
+            android:layout_height="?actionBarSize"
             android:title="@string/add_exercise"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/add_exercise"
+            app:titleTextColor="@android:color/white"/>
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:lines="1"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            tools:text="24 october 2016"/>
 
     </android.support.design.widget.AppBarLayout>
 

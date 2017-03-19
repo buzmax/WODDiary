@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25"
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "woddiary20.bazaleev.io.woddiary20"
@@ -30,7 +30,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
-    androidTestCompile 'com.android.support:support-annotations:25.0.1'
+    androidTestCompile "com.android.support:support-annotations:$rootProject.ext.SUPPORT_LIBRARY_VERSION"
     androidTestCompile 'com.android.support.test:runner:0.5'
 
     compile "com.android.support:appcompat-v7:$rootProject.ext.SUPPORT_LIBRARY_VERSION"

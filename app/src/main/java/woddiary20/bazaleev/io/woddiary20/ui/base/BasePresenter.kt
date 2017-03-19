@@ -19,14 +19,13 @@ open class BasePresenter<T : IView> : IPresenter<T> {
     }
 
     override fun detachView() {
-        if (uiView!!.get() != null) {
+        if (uiView!!.get() != null)
             uiView!!.clear()
-        }
         uiView = null
     }
 
     override fun registerListeners() {
-        
+
     }
 
     override fun unregisterListeners() {
@@ -53,7 +52,7 @@ open class BasePresenter<T : IView> : IPresenter<T> {
     val view: T
         get() {
             if (isViewAttached)
-                return uiView!!.get()
+                return uiView!!.get()!!
             else
                 throw NullPointerException()
         }
