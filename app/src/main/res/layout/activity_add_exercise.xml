@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="woddiary20.bazaleev.io.woddiary20.ui.addexercise.AddExerciseActivity">
-
-    <!--<android.support.design.widget.FloatingActionButton-->
-    <!--android:id="@+id/fab"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="@dimen/fab_margin"-->
-    <!--app:layout_anchor="@+id/app_bar"-->
-    <!--app:layout_anchorGravity="bottom|end"-->
-    <!--app:srcCompat="@android:drawable/ic_dialog_email"/>-->
-
-    <include layout="@layout/add_exercise_layout"/>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -32,25 +20,34 @@
             android:title="@string/add_exercise"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/add_exercise"
-            app:titleTextColor="@android:color/white"/>
+            app:titleTextColor="@android:color/white" />
 
-        <EditText
+        <android.support.v7.widget.AppCompatEditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:gravity="center"
+            android:maxLines="1"
             android:lines="1"
-            android:textSize="24sp"/>
+            android:imeOptions="actionDone"
+            android:hint="@string/name"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_gravity="center"
-            tools:text="24 october 2016"/>
+            android:layout_margin="10dp"
+            tools:text="24 october 2016">
+
+            <requestFocus />
+        </TextView>
 
     </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/add_exercise_layout" />
 
 
 </android.support.design.widget.CoordinatorLayout>

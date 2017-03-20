@@ -1,8 +1,11 @@
 package woddiary20.bazaleev.io.woddiary20.ui.addexercise
 
 import android.os.Bundle
+import android.support.annotation.IntegerRes
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SeekBar
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_add_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_layout.*
 import woddiary20.bazaleev.io.woddiary20.R
@@ -18,25 +21,8 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_exercise)
         setUpActionBar()
-        setUpSets()
-    }
-
-    private fun setUpActionBar() {
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-    }
-
-    private fun setUpSets() {
-//        setsController = SetController(sets_container)
-        addSet()
-//        setsController!!.addSet()
-        ib_plus.setOnClickListener {
-            addSet()
-            //            setsController!!.addSet()
-//            scroll_container.post {
-//                scroll_container.scrollTo(0, scroll_container.bottom)
-//            }
-        }
+        setUpControls()
+        setUpDefaults()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,12 +57,79 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
 
     override fun onExerciseSaved() = onBackPressed()
 
-    fun addSet() {
+    private fun addSet() {
 //        val view = LayoutInflater.from(this).inflate(R.layout.item_set, sets_container, false)
 //        view.tag = sets_container.childCount
 //        view.ib_remove.setOnClickListener({})
 //        sets_container.addView(view)
 //        sets_container.requestLayout()
 //        view.et_reps.requestFocus()
+    }
+
+
+    private fun setUpDefaults() {
+        tv_amount.text = "5"
+        tv_sets.text = "3"
+        tv_reps.text = "8"
+
+        sets_container.adapter = SetsAdapter(3, 8, 5.0)
+    }
+
+    private fun setUpActionBar() {
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setUpControls() {
+        addSet()
+
+        ib_reps_minus.setOnClickListener {
+            subtractNum(tv_reps)
+        }
+
+        ib_reps_plus.setOnClickListener {
+            addNum(tv_reps)
+        }
+
+        ib_sets_minus.setOnClickListener {
+            subtractNum(tv_sets)
+        }
+
+        ib_sets_plus.setOnClickListener {
+            addNum(tv_sets)
+        }
+
+        sb_amount.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+
+            }
+        })
+    }
+
+    private fun addNum(textView: TextView) {
+        try {
+            val num = Integer.parseInt(textView.text.toString())
+            textView.text = String.format("%d", num + 1)
+        } catch (e: NumberFormatException) {
+
+        }
+    }
+
+    private fun subtractNum(textView: TextView) {
+        try {
+            val num = Integer.parseInt(textView.text.toString())
+            if (num > 1)
+                textView.text = String.format("%d", num - 1)
+        } catch (e: NumberFormatException) {
+
+        }
     }
 }

@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    tools:showIn="@layout/add_exercise_layout"
-    android:gravity="center_vertical">
+    android:layout_margin="5dp"
+    android:elevation="2dp"
+    android:gravity="bottom"
+    tools:showIn="@layout/activity_add_exercise"
+    android:padding="10dp">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <android.support.v7.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/et_reps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/reps"
-            android:inputType="number"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <android.support.v7.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/et_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/amount"
-            android:inputType="numberDecimal"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <ImageButton
-        android:id="@+id/ib_remove"
+    <TextView
+        android:id="@+id/set_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?selectableItemBackground"
-        android:contentDescription="@string/title_activity_add_exercise"
-        android:padding="10dp"
-        android:src="@drawable/ic_remove_accent_24dp"/>
+        android:text="@string/d_set"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/set_reps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="2"
+        android:gravity="center"
+        android:textSize="22sp"
+        tools:text="20" />
+
+    <TextView
+        android:id="@+id/set_reps_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_reps"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/set_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="2"
+        android:gravity="center"
+        android:textSize="22sp"
+        tools:text="100" />
+
+    <TextView
+        android:id="@+id/set_units"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/kg"
+        android:textSize="18sp" />
 
 </LinearLayout>
