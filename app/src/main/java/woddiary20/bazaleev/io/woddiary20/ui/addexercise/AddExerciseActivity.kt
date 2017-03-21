@@ -1,7 +1,6 @@
 package woddiary20.bazaleev.io.woddiary20.ui.addexercise
 
 import android.os.Bundle
-import android.support.annotation.IntegerRes
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SeekBar
@@ -99,9 +98,11 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
             addNum(tv_sets)
         }
 
+
+        sb_amount.max = 300
         sb_amount.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-
+                tv_amount.text = String.format("%s kg", progress.toDouble() / 2.0)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {

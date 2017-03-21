@@ -22,7 +22,7 @@
             app:title="@string/add_exercise"
             app:titleTextColor="@android:color/white" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,9 @@
             android:gravity="center"
             android:maxLines="1"
             android:lines="1"
+            android:inputType="textCapWords|textNoSuggestions"
             android:imeOptions="actionDone"
+            android:imeActionLabel="done"
             android:hint="@string/name"
             android:textSize="30sp" />
 
@@ -47,7 +49,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/add_exercise_layout" />
+    <include layout="@layout/add_exercise_layout"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

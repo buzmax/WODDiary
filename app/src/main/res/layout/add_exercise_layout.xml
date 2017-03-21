@@ -98,20 +98,21 @@
                 android:text="@string/amount"
                 android:textSize="20sp" />
 
-            <android.support.v7.widget.AppCompatSeekBar
-                android:id="@+id/sb_amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp" />
-
             <TextView
                 android:id="@+id/tv_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
+                android:layout_gravity="center"
                 android:layout_marginBottom="3dp"
                 android:textSize="28sp"
                 tools:text="5" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sb_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"/>
 
         </FrameLayout>
 
