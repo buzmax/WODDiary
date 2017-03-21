@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import woddiary20.bazaleev.io.woddiary20.R
+import woddiary20.bazaleev.io.woddiary20.R.string.amount
 
 import java.util.ArrayList
 
@@ -17,9 +18,9 @@ import woddiary20.bazaleev.io.woddiary20.storage.model.Set
 
 class SetsAdapter : RecyclerView.Adapter<SetsAdapter.SetsViewHolder> {
 
-    val setList: List<Set>
+    val setList: MutableList<Set>
 
-    internal constructor(setList: List<Set>) {
+    internal constructor(setList: MutableList<Set>) {
         this.setList = setList
     }
 
@@ -60,5 +61,25 @@ class SetsAdapter : RecyclerView.Adapter<SetsAdapter.SetsViewHolder> {
             reps.text = String.format("%d", item.repsCount)
             amount.text = String.format("%s", item.amount)
         }
+    }
+
+    fun removeSet() {
+        if (setList.size > 1) {
+            val index = setList.size - 1
+            setList.removeAt(index)
+            notifyItemRemoved(index)
+        }
+    }
+
+    fun addSet() {
+        val zeroElement = setList[0]
+        val set = Set()
+        set.amount = zeroElement.amount
+        set.order = setList.size
+        set.repsCount = zeroElement.repsCount
+        set.time = 0
+        setList.add(set)
+
+        notifyItemInserted(setList.size - 1)
     }
 }

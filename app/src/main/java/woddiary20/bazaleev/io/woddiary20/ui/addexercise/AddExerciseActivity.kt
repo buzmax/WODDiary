@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.SeekBar
 import android.widget.TextView
+import jp.wasabeef.recyclerview.animators.LandingAnimator
 import kotlinx.android.synthetic.main.activity_add_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_layout.*
 import woddiary20.bazaleev.io.woddiary20.R
@@ -13,7 +14,7 @@ import woddiary20.bazaleev.io.woddiary20.ui.base.BaseActivity
 
 class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(), AddExerciseView {
     var addExercisePresenter: AddExercisePresenter? = null
-//    var setsController: SetController? = null
+    var setsAdapter: SetsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WODDiaryApplication.getAppComponent(this).inject(this)
@@ -56,22 +57,15 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
 
     override fun onExerciseSaved() = onBackPressed()
 
-    private fun addSet() {
-//        val view = LayoutInflater.from(this).inflate(R.layout.item_set, sets_container, false)
-//        view.tag = sets_container.childCount
-//        view.ib_remove.setOnClickListener({})
-//        sets_container.addView(view)
-//        sets_container.requestLayout()
-//        view.et_reps.requestFocus()
-    }
-
-
     private fun setUpDefaults() {
         tv_amount.text = "5"
         tv_sets.text = "3"
         tv_reps.text = "8"
 
-        sets_container.adapter = SetsAdapter(3, 8, 5.0)
+        setsAdapter = SetsAdapter(3, 8, 5.0)
+
+        sets_container.adapter = setsAdapter
+        sets_container.itemAnimator = LandingAnimator()
     }
 
     private fun setUpActionBar() {
@@ -80,7 +74,6 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
     }
 
     private fun setUpControls() {
-        addSet()
 
         ib_reps_minus.setOnClickListener {
             subtractNum(tv_reps)
@@ -92,10 +85,12 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
 
         ib_sets_minus.setOnClickListener {
             subtractNum(tv_sets)
+            setsAdapter!!.removeSet()
         }
 
         ib_sets_plus.setOnClickListener {
             addNum(tv_sets)
+            setsAdapter!!.addSet()
         }
 
 
