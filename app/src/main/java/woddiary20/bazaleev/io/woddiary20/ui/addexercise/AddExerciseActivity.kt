@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_add_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_layout.*
 import woddiary20.bazaleev.io.woddiary20.R
 import woddiary20.bazaleev.io.woddiary20.WODDiaryApplication
+import woddiary20.bazaleev.io.woddiary20.storage.model.Set
 import woddiary20.bazaleev.io.woddiary20.ui.base.BaseActivity
 
 class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(), AddExerciseView {
@@ -46,8 +47,6 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
     override fun setDate(date: String) {
         tv_date.text = date
     }
-
-//    override fun getSetsList(): List<Set>? = setsController!!.getSetsList()
 
     override fun getName(): String = et_name.text.toString()
 
@@ -109,6 +108,8 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
             }
         })
     }
+
+    override fun getSetsList(): List<Set>? = setsAdapter!!.setList
 
     private fun addNum(textView: TextView) {
         try {
