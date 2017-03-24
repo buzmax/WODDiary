@@ -1,11 +1,11 @@
 package woddiary20.bazaleev.io.woddiary20.ui.addexercise
 
 import android.os.Bundle
+import android.support.v7.widget.DefaultItemAnimator
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SeekBar
 import android.widget.TextView
-import jp.wasabeef.recyclerview.animators.LandingAnimator
 import kotlinx.android.synthetic.main.activity_add_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_layout.*
 import woddiary20.bazaleev.io.woddiary20.R
@@ -64,7 +64,7 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
         setsAdapter = SetsAdapter(3, 8, 5.0)
 
         sets_container.adapter = setsAdapter
-        sets_container.itemAnimator = LandingAnimator()
+        sets_container.itemAnimator = DefaultItemAnimator()
     }
 
     private fun setUpActionBar() {
