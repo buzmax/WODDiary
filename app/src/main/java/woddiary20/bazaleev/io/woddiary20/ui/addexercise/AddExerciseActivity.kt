@@ -76,10 +76,12 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
 
         ib_reps_minus.setOnClickListener {
             subtractNum(tv_reps)
+            setsAdapter!!.substractRep()
         }
 
         ib_reps_plus.setOnClickListener {
             addNum(tv_reps)
+            setsAdapter!!.addRep()
         }
 
         ib_sets_minus.setOnClickListener {
@@ -96,7 +98,9 @@ class AddExerciseActivity : BaseActivity<AddExercisePresenter, AddExerciseView>(
         sb_amount.max = 300
         sb_amount.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                tv_amount.text = String.format("%s kg", progress.toDouble() / 2.0)
+                val amount = progress.toDouble() / 2.0
+                tv_amount.text = String.format("%s kg", amount)
+                setsAdapter!!.changeAmount(amount)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {

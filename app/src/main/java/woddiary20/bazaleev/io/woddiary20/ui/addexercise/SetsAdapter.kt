@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import woddiary20.bazaleev.io.woddiary20.R
-import woddiary20.bazaleev.io.woddiary20.R.string.amount
-
-import java.util.ArrayList
-
 import woddiary20.bazaleev.io.woddiary20.storage.model.Set
+import java.util.*
 
 /**
  * Created by macuser on 3/20/17.
@@ -65,21 +62,29 @@ class SetsAdapter : RecyclerView.Adapter<SetsAdapter.SetsViewHolder> {
 
     fun removeSet() {
         if (setList.size > 1) {
-            val index = setList.size - 1
+            val index = setList.lastIndex
             setList.removeAt(index)
             notifyItemRemoved(index)
         }
     }
 
     fun addSet() {
-        val zeroElement = setList[0]
-        val set = Set()
-        set.amount = zeroElement.amount
-        set.order = setList.size
-        set.repsCount = zeroElement.repsCount
-        set.time = 0
-        setList.add(set)
-
+        setList.add(setList.last().clone())
         notifyItemInserted(setList.size - 1)
+    }
+
+    fun changeAmount(amount: Double) {
+        setList.forEach { it.amount = amount }
+        notifyDataSetChanged()
+    }
+
+    fun addRep() {
+        setList.forEach { if (it.repsCount!! > 0) it.repsCount = it.repsCount!!.inc() }
+        notifyDataSetChanged()
+    }
+
+    fun substractRep() {
+        setList.forEach { if (it.repsCount!! > 1) it.repsCount = it.repsCount!!.dec() }
+        notifyDataSetChanged()
     }
 }

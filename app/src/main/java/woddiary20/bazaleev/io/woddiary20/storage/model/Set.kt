@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 import woddiary20.bazaleev.io.woddiary20.storage.cntntprvdr.WODDBConstants
-import kotlin.comparisons.compareValues
 
 /**
  * Created by max on 11/21/16.
@@ -55,6 +54,16 @@ class Set constructor() : DBEntity, Comparable<Set> {
         if (exerciseId != other.exerciseId) return false
 
         return true
+    }
+
+    public fun clone() : Set {
+        val set = Set()
+        set.amount = amount
+        set.time = time
+        set.exerciseId = exerciseId
+        set.repsCount = repsCount
+        set.order = order!!.plus(1)
+        return set
     }
 
     override fun hashCode(): Int {
